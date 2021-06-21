@@ -1,0 +1,128 @@
+
+    <html>
+        <head>
+        <title>brifier les saisies de formulaire</title>
+        <link rel="stylesheet" href="styl.css">
+        <script type="text/javascript">
+        
+         function verif_formulaire()
+         {
+         a=formulaire.name.value;
+        exp=/^[A-z]{1}[a-z]+$/;
+               if(document.formulaire.nom.value == "")  {
+           alert("Veuillez entrer votre nom!");
+           document.formulaire.nom.focus();
+           return false;
+          }
+         if(document.formulaire.cin.value == "") {
+           alert("Veuillez entrer votre Numero de Cin!");
+           document.formulaire.cin.focus();
+           return false;
+          }
+          var chkZ = 1;
+         for(i=0;i<document.formulaire.cin.value.length;++i)
+           if(document.formulaire.cin.value.charAt(i) < "0"
+           || document.formulaire.cin.value.charAt(i) > "9")
+             chkZ = -1;
+         if(chkZ == -1) {
+           alert("Cette mention n'est pas un nombre!");
+           document.formulaire.cin.focus();
+           return false;
+          }
+         if(document.formulaire.courriel.value == "") {
+           alert("Veuillez entrer votre adresse électronique!");
+           document.formulaire.courriel.focus();
+           return false;
+          }
+         if(document.formulaire.courriel.value.indexOf('@') == -1) {
+           alert("Ce n'est pas une adresse électronique!");
+           document.formulaire.courriel.focus();
+           return false;
+          }
+         if(document.formulaire.Numero.value == "") {
+           alert("Veuillez entrer votre Numero Tel!");
+           document.formulaire.Numero.focus();
+           return false;
+          }
+         var chkZ = 1;
+         for(i=0;i<document.formulaire.Numero.value.length;++i)
+           if(document.formulaire.Numero.value.charAt(i) < "0"
+           || document.formulaire.Numero.value.charAt(i) > "9")
+             chkZ = -1;
+         if(chkZ == -1) {
+           alert("Cette mention n'est pas un nombre!");
+           document.formulaire.Numero.focus();
+           return false;
+          }
+        }
+        function quantité(selectObject) {
+        let qtéSélectionnée = 2;
+        for (let i = 0; i < selectObject.options.length; i++) {
+          if (selectObject.options[i].selected) {
+            qtéSélectionnée++;
+          }
+        }
+        return qtéSélectionnée;
+      }
+      
+      let btn = document.getElementById("btn");
+      btn.addEventListener("click", function(){
+        alert('Nombre d\'options choisies : ' + quantité(document.selectForm.typesMusique))
+      });
+          </script>
+        </head>
+        <body bgcolor="#EEEEEE" text="#000000">
+        <fieldset>
+        <h1>formulaire</h1>
+        
+      <form name="formulaire" action="#" method="post" onSubmit="return verif_formulaire()">
+        <div class="myrow"></div>
+         <div class="label1">
+            <div>nom et prenom :<strong>*</strong></div>
+            <div>Cin :<strong>*</strong></div>
+            <div>Adress mail :<strong>*</strong></div>
+            <div>num tel :<strong>*</strong></div>
+           
+         </div>
+
+         <div class="myinput">
+           <div><input type="text" size="40" name="nom" ></div> 
+           <div><input type="text" size="20" name="cin" minlength="8" maxlength="8"></div>
+           <div><input type="text" size="40" name="courriel"></div>
+           <div><input type="text" size="40" name="Numero" minlength="8" maxlength="8"></div>
+         </div>
+
+         
+         <div class="put">
+          <label for="Niveau Scolaire :"> Niveau Scolaire :</label>
+
+          <input id=niveau name=text type= radio checked>
+           <label for=sec>Secondaire</label> 
+
+           <input id= choose nname=text type= radio>
+           <label for=unv>Universitaire</label> 
+
+          <input id=autre name=ttext type= radio>
+           <label for=autre>Autre</label> 
+       </div>
+
+       <!---->
+          <div class="item">
+              <div class="multip">
+          <label style="width: 200px;" for=" text">  Modules de formation  </label> </div>
+        <div class="mult">
+          <select id="typesMusique" name="typesMusique" multiple="multiple">
+            <option selected="selected">R&B</option>
+            <option>Jazz</option>
+            <option>Blues</option>
+            <option>New Age</option>
+            <option>Classique</option>
+            <option>Opera</option>
+          </select><br>
+        <input class="int" type="submit" value="Envoyer"><input type="reset" value="Interrompre">
+        
+        
+        </form>
+      </fieldset>
+        </body>
+        </html> 
